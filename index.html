@@ -1,230 +1,0 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPM MOVIES - تماشای فیلم و سریال</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons for social media/UI -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* تنظیمات سفارشی Tailwind و فونت */
-        :root {
-            --primary-color: #0d1117; /* پس‌زمینه بسیار تیره */
-            --accent-color: #2dd4e7; /* رنگ نئونی (آبی فیروزه‌ای) */
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-color);
-        }
-        
-        /* استایل سفارشی برای افکت نور نئونی نازک هنگام هاور */
-        .movie-card:hover .poster-image {
-            box-shadow: 0 0 10px rgba(45, 212, 231, 0.8), /* نور ضعیف‌تر */
-                        0 0 20px rgba(45, 212, 231, 0.6); /* نور اصلی */
-            transform: scale(1.05);
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* استایل برای اسکرول افقی زیبا (مخفی کردن اسکرول بار اما حفظ قابلیت اسکرول) */
-        .scroll-strip::-webkit-scrollbar {
-            display: none;
-        }
-        .scroll-strip {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-    </style>
-</head>
-<body class="text-white">
-
-    <!-- نوار ناوبری (هدر) -->
-    <header class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-sm p-4 shadow-xl">
-        <div class="container mx-auto flex justify-between items-center px-4 md:px-8">
-            <h1 class="text-3xl font-extrabold tracking-wider text-white">SPM MOVIES</h1>
-            <nav class="hidden md:flex space-x-6 space-x-reverse text-lg font-medium">
-                <a href="#irani-movies" class="hover:text-cyan-400 transition duration-300">فیلم ایرانی</a>
-                <a href="#irani-series" class="hover:text-cyan-400 transition duration-300">سریال ایرانی</a>
-                <a href="#foreign-movies" class="hover:text-cyan-400 transition duration-300">فیلم خارجی</a>
-                <a href="#foreign-series" class="hover:text-cyan-400 transition duration-300">سریال خارجی</a>
-            </nav>
-            <div class="md:hidden">
-                <!-- دکمه منوی موبایل (صرفاً بصری) -->
-                <button class="text-white hover:text-cyan-400">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- محتوای اصلی -->
-    <main class="container mx-auto py-8 px-4 md:px-8">
-
-        <!-- تابع کمکی کارت فیلم -->
-        <script>
-            /**
-             * یک رشته HTML برای کارت فیلم ایجاد می‌کند.
-             * @param {string} title - عنوان فیلم.
-             * @param {string} imageUrl - لینک تصویر کاور.
-             * @param {string} altText - متن جایگزین تصویر.
-             */
-            function createMovieCard(title, imageUrl, altText) {
-                return `
-                <div class="movie-card flex-shrink-0 w-36 sm:w-44 lg:w-56 cursor-pointer group">
-                    <!-- تصویر با افکت نور نئونی هنگام هاور -->
-                    <div class="poster-image w-full h-52 sm:h-64 lg:h-80 rounded-xl overflow-hidden mb-2 transition-all duration-300 border-2 border-transparent group-hover:border-cyan-400/50">
-                        <img 
-                            src="${imageUrl}" 
-                            alt="${altText}" 
-                            onerror="this.onerror=null; this.src='https://placehold.co/300x450/1e293b/94a3b8?text=SPM'" 
-                            class="w-full h-full object-cover transition duration-500 ease-in-out group-hover:opacity-90"
-                        >
-                    </div>
-                    <!-- عنوان فیلم -->
-                    <p class="text-sm sm:text-base font-semibold truncate text-center group-hover:text-cyan-400 transition duration-300">${title}</p>
-                </div>
-                `;
-            }
-            
-            // داده‌های نمونه (از لینک‌های جایگزین placehold.co استفاده شده)
-            const movieData = {
-                iranianMovies: [
-                    { title: "ابلق", url: "https://placehold.co/300x450/14b8a6/FFFFFF?text=Ab+lag" },
-                    { title: "تی‌تی", url: "https://placehold.co/300x450/4ade80/FFFFFF?text=Titi" },
-                    { title: "دینامیت", url: "https://placehold.co/300x450/f97316/FFFFFF?text=Dynamite" },
-                    { title: "درخت گردو", url: "https://placehold.co/300x450/22c3e3/FFFFFF?text=Nut+Tree" },
-                    { title: "خورشید", url: "https://placehold.co/300x450/e879f9/FFFFFF?text=Khorshid" },
-                    { title: "متری شیش و نیم", url: "https://placehold.co/300x450/3b82f6/FFFFFF?text=Six+Half" },
-                    { title: "جدایی نادر از سیمین", url: "https://placehold.co/300x450/6d28d9/FFFFFF?text=Jodaei" },
-                    { title: "قهرمان", url: "https://placehold.co/300x450/f43f5e/FFFFFF?text=Ghahreman" },
-                ],
-                iranianSeries: [
-                    { title: "یاغی", url: "https://placehold.co/300x450/84cc16/FFFFFF?text=Yaghi" },
-                    { title: "جیران", url: "https://placehold.co/300x450/ef4444/FFFFFF?text=Jeyran" },
-                    { title: "پوست شیر", url: "https://placehold.co/300x450/eab308/FFFFFF?text=Poost+Shir" },
-                    { title: "شهرزاد", url: "https://placehold.co/300x450/a855f7/FFFFFF?text=Shahrzad" },
-                    { title: "قورباغه", url: "https://placehold.co/300x450/ec4899/FFFFFF?text=Ghoorbaghe" },
-                    { title: "آقازاده", url: "https://placehold.co/300x450/4338ca/FFFFFF?text=Aghazadeh" },
-                    { title: "ممنوعه", url: "https://placehold.co/300x450/06b6d4/FFFFFF?text=Mamnooe" },
-                    { title: "سقوط", url: "https://placehold.co/300x450/f9a8d4/FFFFFF?text=Soghoot" },
-                ],
-                foreignMovies: [
-                    { title: "Dune: Part Two", url: "https://placehold.co/300x450/475569/FFFFFF?text=Dune+2" },
-                    { title: "Oppenheimer", url: "https://placehold.co/300x450/334155/FFFFFF?text=Oppenheimer" },
-                    { title: "Barbie", url: "https://placehold.co/300x450/e9d5ff/000000?text=Barbie" },
-                    { title: "Mission Impossible: DR", url: "https://placehold.co/300x450/be123c/FFFFFF?text=MI+DR" },
-                    { title: "The Creator", url: "https://placehold.co/300x450/94a3b8/FFFFFF?text=Creator" },
-                    { title: "The Martian", url: "https://placehold.co/300x450/7c3aed/FFFFFF?text=Martian" },
-                    { title: "Interstellar", url: "https://placehold.co/300x450/16a34a/FFFFFF?text=Interstellar" },
-                    { title: "Joker", url: "https://placehold.co/300x450/facc15/000000?text=Joker" },
-                ],
-                foreignSeries: [
-                    { title: "Squid Game", url: "https://placehold.co/300x450/dc2626/FFFFFF?text=Squid+Game" },
-                    { title: "The Last of Us", url: "https://placehold.co/300x450/1e3a8a/FFFFFF?text=TLoU" },
-                    { title: "Severance", url: "https://placehold.co/300x450/f472b6/FFFFFF?text=Severance" },
-                    { title: "Stranger Things", url: "https://placehold.co/300x450/991b1b/FFFFFF?text=ST" },
-                    { title: "The Crown", url: "https://placehold.co/300x450/d4d4d4/000000?text=The+Crown" },
-                    { title: "House of the Dragon", url: "https://placehold.co/300x450/5b21b6/FFFFFF?text=HotD" },
-                    { title: "Yellowstone", url: "https://placehold.co/300x450/ca8a04/FFFFFF?text=Yellowstone" },
-                    { title: "Loki", url: "https://placehold.co/300x450/0f766e/FFFFFF?text=Loki" },
-                ]
-            };
-
-            // تابعی برای پر کردن بخش‌های محتوا
-            function populateSections() {
-                const sections = [
-                    { id: 'irani-movies-list', data: movieData.iranianMovies },
-                    { id: 'irani-series-list', data: movieData.iranianSeries },
-                    { id: 'foreign-movies-list', data: movieData.foreignMovies },
-                    { id: 'foreign-series-list', data: movieData.foreignSeries }
-                ];
-
-                sections.forEach(section => {
-                    const container = document.getElementById(section.id);
-                    if (container) {
-                        container.innerHTML = section.data.map(item => createMovieCard(item.title, item.url, item.title)).join('');
-                    }
-                });
-            }
-
-            window.onload = function() {
-                populateSections();
-                // فعال کردن آیکون‌های Lucide
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            }
-        </script>
-        
-        <!-- بخش ۱: فیلم‌های ایرانی -->
-        <section id="irani-movies" class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 border-b-2 border-cyan-400/50 pb-2 inline-block">🎥 فیلم‌های ایرانی</h2>
-            <div id="irani-movies-list" class="scroll-strip flex overflow-x-scroll space-x-4 space-x-reverse py-4">
-                <!-- کارت‌های فیلم در اینجا با جاوااسکریپت پر می‌شوند -->
-            </div>
-        </section>
-
-        <!-- بخش ۲: سریال‌های ایرانی -->
-        <section id="irani-series" class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 border-b-2 border-cyan-400/50 pb-2 inline-block">📺 سریال‌های ایرانی</h2>
-            <div id="irani-series-list" class="scroll-strip flex overflow-x-scroll space-x-4 space-x-reverse py-4">
-                <!-- کارت‌های فیلم در اینجا با جاوااسکریپت پر می‌شوند -->
-            </div>
-        </section>
-
-        <!-- بخش ۳: فیلم‌های خارجی -->
-        <section id="foreign-movies" class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 border-b-2 border-cyan-400/50 pb-2 inline-block">🎬 فیلم‌های خارجی</h2>
-            <div id="foreign-movies-list" class="scroll-strip flex overflow-x-scroll space-x-4 space-x-reverse py-4">
-                <!-- کارت‌های فیلم در اینجا با جاوااسکریپت پر می‌شوند -->
-            </div>
-        </section>
-
-        <!-- بخش ۴: سریال‌های خارجی -->
-        <section id="foreign-series" class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 border-b-2 border-cyan-400/50 pb-2 inline-block">🌐 سریال‌های خارجی</h2>
-            <div id="foreign-series-list" class="scroll-strip flex overflow-x-scroll space-x-4 space-x-reverse py-4">
-                <!-- کارت‌های فیلم در اینجا با جاوااسکریپت پر می‌شوند -->
-            </div>
-        </section>
-
-        <!-- بخش شبکه‌های اجتماعی -->
-        <section id="social-media" class="mb-12 pt-8 border-t border-gray-800">
-            <h2 class="text-xl md:text-2xl font-bold mb-6 text-center text-cyan-400">شبکه‌های اجتماعی سعید پروانه</h2>
-            <div class="flex justify-center space-x-6 space-x-reverse">
-                <!-- لینک‌های نمونه. لطفاً لینک‌های واقعی خود را جایگزین کنید. -->
-                <a href="https://t.me/yourid" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <i data-lucide="send" class="w-8 h-8"></i> <!-- Telegram Icon -->
-                </a>
-                <a href="https://instagram.com/yourid" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <i data-lucide="instagram" class="w-8 h-8"></i>
-                </a>
-                <a href="https://linkedin.com/in/yourid" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <i data-lucide="linkedin" class="w-8 h-8"></i>
-                </a>
-                <a href="https://github.com/yourid" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <i data-lucide="github" class="w-8 h-8"></i>
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- فوتر و بخش کپی‌رایت -->
-    <footer class="bg-gray-900/80 p-6 text-center border-t border-gray-800">
-        <p class="text-sm text-gray-400">
-            طراحی و ساخت این سایت توسط سعیدپروانه انجام شده
-            <a href="https://github.com/saeidparvaneh" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-mono">@saeidparvaneh</a>
-        </p>
-        <p class="text-xs text-gray-600 mt-2">
-            این قالب صرفاً یک نمونه طراحی (Mockup) بوده و هیچ محتوای ویدیویی در خود ندارد.
-        </p>
-    </footer>
-
-</body>
-</html>
-
-
