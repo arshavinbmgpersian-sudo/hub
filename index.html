@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>سریکس دی ال - دانلود سریال های خارجی بدون سانسور </title>
+
+  <!-- فونت فارسی (نمونه: Vazirmatn از گوگل) -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  	@font-face {
+  font-family: "VazirM";
+  font-weight: 300;
+  src: url(/Font/VazirM.ttf) format("truetype"), url(/Font/VazirM.ttf) format("embedded-opentype"), url(/Font/VazirM.ttf) format("ttf"), url(/Font/VazirM.ttf) format("ttf");
+  }
+  @font-face {
+  font-family: "ios";
+  font-weight: normal;
+  src: url(/Font/ios.ttf) format("embedded-opentype"), url(/Fonts/ios.ttf) format("svg"), url(/Font/ios.ttf) format("truetype"), url(/Font/ios.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Bebas";
+  font-weight: 400;
+  src: url(../fonts/Bebas/Bebas-Regular.woff) format("woff");
+}
+
+    :root{
+      --bg:#0f1721;
+      --card-bg:#0b1220;
+      --muted:#9aa3ad;
+      --accent:#ffb400;
+      --radius:14px;
+      --card-width:230px;
+    }
+    html,body{
+      height:84%;
+      margin:0;
+      font-family: "VazirM", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#0b1116 0%, #0f1721 100%);
+      color:#eef2f7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:24px auto;
+      padding:24px;
+    }
+.controls1 {
+  display: flex;
+  flex-direction: column; /* از بالا به پایین بچین */
+  align-items: center;    /* وسط چین افقی */
+  gap: 8px;               /* فاصله بین نقاط و متن */
+}
+
+.custom-text {
+  text-align: center;     /* متن وسط باشد */
+  color: #fff;
+  font-size: 14px;
+  margin-top: 5px;        /* کمی پایین‌تر از مرکز */
+}
+.new-text {
+  display: flex;
+  justify-content: center; /* وسط افقی */
+  align-items: center;     /* وسط عمودی */
+}
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+      padding: 0 10px; 
+      position: relative;
+    }
+        .header-content{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+.brand{
+        font-weight:700;font-size:18px; /* کاهش سایز از 18px به 16px */
+        color: #fff;
+        white-space: nowrap;
+        text-align: center;
+    }
+        .menu-btn-container{ order: 1; } /* راست */
+    .center-group{ order: 2; } /* وسط */
+    .search-container{ order: 3; } /* چپ */
+
+
+    /* آیکون منو (راست) */
+    .menu-btn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 28px;
+        height: 24px;
+        cursor: pointer;
+        padding: 4px;
+        text-decoration: none;
+    }
+    .menu-btn div{
+        display: block;
+        width: 100%;
+        height: 10px; 
+        background: var(--muted);
+        border-radius: 1px;
+        transition: all 0.3s ease;
+    }
+    .menu-btn:hover div{
+        background: #fff;
+    }
+
+    /* 2. کادر جستجو: رنگ جدید و حذف آیکون */
+    .search-box{
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        /* رنگ پس‌زمینه جدید: استفاده از --accent */
+        background: var(--accent); 
+        color: var(--bg); /* متن روی رنگ نارنجی باید تیره باشد */
+        border-radius: 9px;
+        border: 1px solid var(--accent);
+        transition: all 0.2s ease;
+        text-decoration: none;
+        font-weight: 550; /* کمی برجسته تر شدن متن جستجو */
+    }
+    .search-box:hover{
+        background: rgba(255, 180, 0, 0.8); /* کمی تیره تر هنگام هاور */
+    }
+    .search-box span{
+        font-size: 14px; /* تنظیم اندازه فونت نهایی */
+        padding-right: 0; /* حذف فاصله اضافی */
+    }
+
+    /* استایل‌های کاروسل و بقیه صفحه (بدون تغییر) */
+    .carousel{
+      position:relative;
+      background:transparent;
+      padding:18px 12px;
+      border-radius:12px;
+    }
+    .viewport{ overflow:hidden; padding:8px 0; }
+    .track{ display:flex; gap:20px; transition:transform 450ms cubic-bezier(.25,.9,.25,1); will-change:transform; align-items:stretch; padding:8px; dot:auto overflow-x:auto }
+    .card{ min-width:var(--card-width); width:var(--card-width); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); overflow:hidden; display:flex; flex-direction:column; align-items:stretch; user-select:none; }
+    .poster{ position:relative; min-height:300px; background:#300 center/cover no-repeat; display:block; }
+    .badges{ position:absolute; inset:auto 10px 10px 10px; display:flex; gap:8px; justify-content:flex-end; pointer-events:none; }
+    .badge{ padding:10px 10px; border-radius:8px; font-size:13px; font-weight:600; color:white; box-shadow:0 10px 12px rgba(0,0,0,0.45); pointer-events:auto; }
+    .badge.org{ background:#0ea5e9; font-size:11px; text-align:center; align-items:center; }
+    .badge.dub{ background:#4cbb17; font-size:11px; text-align:center; align-items:center; }
+    .badge.subtitle{ background:#ef4444; font-size:11px; text-align:center; }
+    .badge.seriex{ background:orange; text-align:center; font-size:20px; color:black; }
+    .card-body{ padding:20px; text-align:center; }
+    .movie-title{ font-weight:700; font-size:28px; line-height:1.2; color:#fff; text-align:center; }
+    .meta{ font-size:13px;color:var(--muted);text-align:center; }
+    .controls{ margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .dots{ display:flex; gap:10px; }
+    .dot{ width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.03); cursor:pointer; }
+    .dot.active{ background:var(--accent); box-shadow:0 6px 16px rgba(255,180,64,0.12); }
+    .nav-btn{ position:absolute; top:0%; transform:translateY(-0%); z-index:200; background:linear-gradient(280deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)); border:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(6px); width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center; }
+    .nav-btn:active{ transform:translateY(-0%) scale(.1); }
+    .nav-btn.right{ left:0px; }
+    .nav-btn.left{ right:0px; }
+    .nav-btn svg{ width:18px;height:18px;fill:#fff;opacity:0.99; }
+
+    /* واکنش‌گرایی (کوچک شدن هدر در موبایل) */
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 5px;
+      }
+      /* کوچک کردن اندازه فونت عنوان و نوار جستجو در موبایل */
+      .brand {
+        font-size: 20px; /* باز هم کوچکتر */
+      }
+      .search-box span {
+        font-size: 15px; /* متن جستجو کوچکتر */
+      }
+      .search-box {
+        padding: 2px 4px;
+      }
+      .menu-btn div {
+        height: 3.5px; /* خطوط منو کمی نازک‌تر */
+      }
+    }
+    
+    @media (max-width:560px){
+      :root{ --card-width:305px; }
+      .poster{ min-height:170px; }
+      .nav-btn{ width:35px;height:40px; }
+    }
+    .badges{ justify-content:center !important; }
+    .badge.subtitle { order: 3; }
+    .badge.dub { order: 1; }
+    .badge.org { order: 2; }
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#f6b042,#ffd27a);display:flex;align-items:center;justify-content:center;color:#111;font-weight:700;
+      box-shadow:0 4px 18px rgba(0,0,0,0.6);
+    }
+
+    }
+
+    /* track که حرکت میکند */
+    .track{
+      display:flex;
+      gap:20px;
+      transition:transform 450ms cubic-bezier(.25,.9,.25,1);
+      will-change:transform;
+      align-items:stretch;
+      padding:8px;
+    }
+
+    .card{
+      min-width:var(--card-width);
+      width:var(--card-width);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      user-select:none;
+  user-select: none;
+  -webkit-user-select: none; /* برای مرورگرهای مبتنی بر WebKit (مثل Chrome, Safari) */
+  -moz-user-select: none;    /* برای Firefox */
+  -ms-user-select: none;     /* برای Internet Explorer/Edge */
+}
+
+    }
+    .card {
+	flex: 00 auto;
+  min-width: var(--card-width);
+  width: var(--card-width);
+  background: #222;
+  border: 2px solid rgba(255, 255, 255, 1); /* نارنجی کم‌رنگ */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-left:10px;
+  scroll-padding-right:10px;
+    user-select: none;
+  -webkit-user-select: none; /* برای مرورگرهای مبتنی بر WebKit (مثل Chrome, Safari) */
+  -moz-user-select: none;    /* برای Firefox */
+  -ms-user-select: none; 
+  
+}
+    .poster{
+      position:relative;
+      min-height:300px;
+      background:#300 center/cover no-repeat;
+      display:block;
+    }
+    
+    /* نشانک‌ها */
+    .badges{
+      position:absolute;
+      inset:auto 10px 10px 10px;
+      display:flex;
+      gap:8px;
+      justify-content:flex-end;
+      pointer-events:none;
+    }
+    .badge{
+      padding:10px 10px;
+      border-radius:8px;
+      font-size:13px;
+      font-weight:600;
+      color:white;
+      box-shadow:0 10px 12px rgba(0,0,0,0.45);
+      pointer-events:auto;
+    }
+    .badge.org{ background:#0ea5e9; font-size:11px; text-align:center; align-items:center; }
+    .badge.dub{ background:#4cbb17; font-size:11px; text-align:center; align-items:center; }
+    .badge.subtitle{ background:#ef4444; font-size:11px; text-align:center; }
+    .badge.seriex {
+   background: rgba(256, 185, 0, 1.0);;
+  color: #000;
+  padding: 4px 100px;
+  border-radius: 0px;
+  text-align: center;
+  align-items:center;
+  white-space: nowrap;
+  width: auto;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 18px;
+}
+    .badgeseriex1 {
+   background: rgba(256, 185, 0, 1.0);;
+  color: #000;
+  padding: 4px 100px;
+  border-radius: 0px;
+  text-align: center;
+  align-items:center;
+  white-space: nowrap;
+  width: auto;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 18px;
+}
+.close-btn:hover {
+  background: #fbbf24;
+  color: #000;
+  }
+    .card-body{
+      padding:20px;
+      text-align:center;
+    }
+   .series-slider {
+  display: flex;
+  
+  min-width: 96%;
+  max-width: 70%;
+  width: 100%;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px;
+  align-items:stretch;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding:0px
+  flex-direction: column;
+}
+
+.series-card {
+  flex: 0 0 auto;
+  width: 250px; /* سایز بزرگ‌تر */
+  height: 250px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  align-items: center;
+  scroll-snap-align: start;
+  background: #222;
+  border: 2px solid rgba(255,255,255,1); /* نارنجی کم‌رنگ */
+transition: border 0.3s;
+
+/* اختیاری: وقتی موس روی کارت است، حاشیه کمی روشن‌تر شود */
+.series-card:hover {
+  border: 2px solid #ffa500;
+}
+}
+
+.series-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.series-card .badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  width: 100%;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.series-card .title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: #fff;
+  font-size: 14px;
+  font-weight:400px;
+  text-align: center;
+  direction: rtl;
+}
+.series-card .link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #fbbf24;
+  color: #fbbf24; /* متن زرد پیش‌فرض */
+  font-weight: 600;
+  font-family: 'VazirM', sans-serif;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  width: auto;
+  min-width: 90px;
+  max-width: 140px;
+}
+prev-btn {
+	color: red;
+	}
+.link:active {
+  background: #fbbf24;
+  color: #000; /* متن مشکی هنگام کلیک */
+}
+    .movie-title{
+      font-weight:700;
+      font-family: 'iransans', sans-serif;
+      font-size:20px;
+      line-height:1.2;
+      color:#fff;
+      margin-top: -12px ;
+      text-align:center;
+    }
+    .meta{
+      top: -10px; font-size:13px;color:var(--muted);text-align:center;
+    }
+    /* دکمه های ناوبری */
+    .
+
+    .nav-btn svg{ width:1px;height:180px;fill:#fff;opacity:orange; }
+    
+    .link-btn {
+  text-decoration: none;
+  top: -10px;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #fbbf24;
+  color: #fbbf24; /* متن زرد پیش‌فرض */
+  font-weight: 600;
+  font-family: 'VazirM', sans-serif;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  width: auto;
+  min-width: 200px;
+  max-width: 140px;
+}
+
+.link-btn:active {
+  background: #fbbf24;
+  color: #000; /* متن مشکی هنگام کلیک */
+}
+
+    /* نقاط و صفحه‌بندی */
+    .controls{
+      margin-top:16px;
+      display:flex;
+      align-items:center;
+      flex-direction: column;
+      justify-content:space-between;
+      gap:8px;
+    }
+.new-badge-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* وسط چین badge */
+  margin-top: 5px;        /* فاصله اضافی از dots */
+}
+
+}
+    .dots{ display:flex;gap:8px; }
+    .dot{
+      width:30px;height:16px;border-radius:999px;background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.03);
+      
+    }
+    .dot.active{ background:var(--accent); box-shadow:0 700px 16px rgba(255,180,64,0.12); }
+
+    /* واکنش‌گرایی */
+    @media (max-width:900px){
+      :root{ --card-width:200px; }
+      .poster{ min-height:280px; }
+    }
+    @media (max-width:560px){
+      :root{ --card-width:350px; }
+      .poster{ min-height:200px; }
+      .nav-btn{ width:0px;height:40px; }
+    }
+    .badges{
+      /* تراز شدن کل گروه نشانک‌ها به مرکز */
+      justify-content:center !important;
+    }
+    .badge.subtitle { order: 3; } /* چپ */
+    .badge.dub { order: 1; } /* وسط */
+    .badge.org { order: 2; } /* راست */
+    /* توجه: نام کلاس 'subtitle' در کد شما به جای 'sub' استفاده شده است. اگر منظور شما کلاس 'sub' است، باید آن را در HTML تغییر دهید. من فرض کردم منظور شما کلاس 'subtitle' بوده است. */
+  </style>
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="header">
+          <div class="header-content menu-btn-container">
+        <a href="#new-html-page" class="menu-btn">
+            <div></div>
+            <div></div>
+            <div></div>
+        </a>
+      </div>
+      
+
+      <!-- 2. عنوان در مرکز (order: 2) - فونت کوچکتر شده -->
+      <div class="center-group">
+        <div class="brand">
+            سریکس دی ال
+            
+            <div style="font-size:9px;color:var(--muted); text-align:center; margin-top: 2px;">مرجع دانلود سریال های خارجی بدون سانسور و حذفیات</div>
+        </div>
+      </div>
+      
+      <!-- 3. کادر جستجو در سمت چپ (order: 3) - رنگ نارنجی و بدون آیکون -->
+      <div class="header-content search-container">
+        <a href="Search.html" class="search-box">
+            <span>جستجو  🔎</span>
+        </a>
+      </div>
+
+    </div>
+    
+
+      </div>
+    </div>
+    <div class="badge seriex"> جدیدترین عناوین </div>
+    <section class="carousel" aria-label="کاروسل فیلم‌ها">
+      <div class="viewport">
+        <div class="track" id="track">
+          <!-- هر کارت در اینجا -->
+          <!-- نمونه کارت (تبدیل به تکرار با JS یا اضافه کنید دستی) -->
+          <article class="card" data-subtitle="true" data-dub="true" aria-label="سِرزمین اوباش">
+            <div class="poster" style="background-image:url('/storage/emulated/0/File-Sharing-Bot/01.jpg');">
+              <div class="badges">
+                <!-- نشانک‌ها بر اساس data-attributes ظاهر می‌شوند -->
+                
+                <div class="badge dub"> دوبله 🗣️</div>
+                <div class="badge subtitle">‌ زیرنویس </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title"> MobLand (2025-) 🎬</div>
+              <div class="meta">سرزمین اوباش</div>
+              <div href=htmhl.html class="link-btn">دانلود </div>
+            </div>
+          </article>
+
+          <article class="card" data-subtitle="true" data-dub="false" aria-label="Gen V">
+            <div class="poster" style="background-image:url('/assets/From.jpg');">
+              <div class="badges">
+              	<div class="badge org"> زبان اصلی </div>
+                <div class="badge subtitle">زیرنویس</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Gen V</div>
+              <div class="meta">زیرنویس</div>
+                            <div href=/VIP/HOTD.html class="link-btn">دانلود </div>
+            </div>
+          </article>
+
+          <article class="card" data-subtitle="true" data-dub="false" aria-label="Gen V">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=900&auto=format&fit=crop&s=placeholder2');" >
+              <div class="badges">
+                <div class="badge org"> زبان اصلی </div>
+                <div class="badge subtitle">زیرنویس</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Gen CV</div>
+              <div class="meta">زیرنویس</div>
+            </div>
+          </article>
+          
+          <article class="card" data-subtitle="false" data-dub="true" aria-label="Peacemaker">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=900&auto=format&fit=crop&s=placeholder3');" >
+              <div class="badges">
+                <div class="badge dub" > دوبله فارسی</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Peacemaker</div>
+              <div class="meta">دوبله</div>
+            </div>
+          </article>
+          
+          <article class="card" data-subtitle="true" data-dub="false" aria-label="Gen V">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=900&auto=format&fit=crop&s=placeholder2');" >
+              <div class="badges">
+                <div class="badge org"> زبان اصلی </div>
+                <div class="badge subtitle">زیرنویس</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Gen CV</div>
+              <div class="meta">زیرنویس</div>
+            </div>
+          </article>
+          
+          <article class="card" data-subtitle="false" data-dub="true" aria-label="Peacemaker">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=900&auto=format&fit=crop&s=placeholder3');" >
+              <div class="badges">
+                <div class="badge dub" > دوبله فارسی</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Peacemaker</div>
+              <div class="meta">دوبله</div>
+            </div>
+          </article>
+          
+          <article class="card" data-subtitle="false" data-dub="true" aria-label="Peacemaker">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=900&auto=format&fit=crop&s=placeholder3');">
+              <div class="badges">
+                <div class="badge dub"> دوبله فارسی</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Peacemaker</div>
+              <div class="meta">دوبله</div>
+            </div>
+          </article>
+          
+          <article class="card" data-subtitle="false" data-dub="true" aria-label="Peacemaker">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=900&auto=format&fit=crop&s=placeholder3');">
+              <div class="badges">
+                <div class="badge dub"> دوبله فارسی</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="movie-title">Peacemaker</div>
+              <div class="meta">دوبله</div>
+            </div>
+          </article>
+          
+          </article>
+
+        </div>
+      </div>
+
+      <!-- دکمه‌های حرکت (دقت: برای RTL، دکمه راست به سمت چپ صفحه قرار دارد) -->
+      <div id="prevBtn" >
+        <!-- فلش جهت راست اما برای RTL این دکمه اسلاید قبلی را انجام می‌دهد -->
+      </button>
+
+      <div id="nextBtn" >
+ 
+      </button>
+                <div style="font-size:12px;color:var(--muted); text-align:center; margin-top: 3px;"> ورق زدن این محتوا از طریق کلیک روی دکمه های زیر فقط امکان پذیر است</div>
+      <div class="controls" style="margin-top:10px">
+        <div class="dots" id="dots"></div>
+
+
+  <script>
+    (function(){
+      const track = document.getElementById('track');
+      const cards = Array.from(track.children);
+      const nextBtn = document.getElementById('nextBtn');
+      const prevBtn = document.getElementById('prevBtn');
+      const dotsWrap = document.getElementById('dots');
+      const currentTitle = document.getElementById('currentTitle');
+
+      let index = 0;
+      const visibleCount = Math.floor((document.querySelector('.viewport').offsetWidth) / parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'))) || 3;
+
+      // ایجاد دات‌ها
+      const dotCount = cards.length;
+      const dots = [];
+      for(let i=0;i<dotCount;i++){
+        const d = document.createElement('button');
+        d.className='dot';
+        d.setAttribute('aria-label', `رفتن به اسلاید ${i+1}`);
+        d.addEventListener('click', ()=> goTo(i));
+        dotsWrap.appendChild(d);
+        dots.push(d);
+      }
+
+      function update(){
+        // برای حرکت راست->چپ در RTL از فرمول زیر استفاده می‌کنیم (translateX مثبت به سمت چپ)
+        const cardW = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+        const offset = index * cardW;
+        track.style.transform = `translateX(${offset}px)`;
+        dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+        const activeCard = cards[index];
+        currentTitle.textContent = activeCard ? activeCard.querySelector('.movie-title').textContent : '—';
+      }
+
+      function goTo(i){
+        index = ((i % cards.length) + cards.length) % cards.length;
+        update();
+      }
+
+      prevBtn.addEventListener('click', ()=> {
+        // prev: حرکت به اسلاید قبلی (در RTL بصورت index+1)
+        index = (index + 1) % cards.length;
+        update();
+      });
+      nextBtn.addEventListener('click', ()=> {
+        // next: حرکت به اسلاید بعدی (در RTL بصورت index-1)
+        index = (index - 1 + cards.length) % cards.length;
+        update();
+      });
+
+      // کلیدهای صفحه‌کلید
+      window.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') prevBtn.click();
+        if(e.key === 'ArrowRight') nextBtn.clik();
+      });
+
+
+
+      // تنظیم نشانک‌ها بر اساس data-attributes (در صورتی که بخواهید JS آنها را نشان/پنهان کند)
+      cards.forEach(card=>{
+        const showSub = card.getAttribute('data-subtitle') === 'true';
+        const showDub = card.getAttribute('data-dub') === 'true';
+        const badges = card.querySelector('.badges');
+        if(!showSub){
+          const el = badges.querySelector('.subtitle');
+          if(el) el.remove();
+        }
+        if(!showDub){
+          const el = badges.querySelector('.dub');
+          if(el) el.remove();
+        }
+      });
+
+      // Autoplay ساده
+      let autoplayInterval = setInterval(()=> {
+        // حرکت خودکار (RTL logic)
+        index = (index + 1 +cards.length) % cards.length;
+        update();
+      }, 5000);
+
+      // وقتی پنجره تغییر سایز داشت، بروزرسانی کن
+      window.addEventListener('resize', () => requestAnimationFrame(update));
+      // شروع
+      goTo(0);
+    })();
+    const swiper = new Swiper('.swiper-container', {
+  // تنظیمات اسلایدر
+  slidesPerView: 2,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+
+});
+
+    
+  </script>
+  <div class="controls" style="margin-top:10px;">
+  <div class="dots" id="dots"></div>
+  
+  <!-- متن یا badge جدید زیر dots -->
+‌</script>
+      </div>
+    </div>
+    <div class="badgeseriex1"> آخرین بروزرسانی ها </div>
+                <div style="font-size:12px;color:var(--muted); text-align:center; margin-top: 3px;">ورق بزنید ></div>
+    <section class="carousel" aria-label="کاروسل فیلم‌ها">
+      <div class="viewport">
+        <div class="track" id="track">
+          <!-- هر کارت در اینجا -->
+          <!-- نمونه کارت (تبدیل به تکرار با JS یا اضافه کنید دستی) -->
+<div class="series-slider">
+  <div class="series-card">
+    <span class="badge"> دوبله فارسی قسمت ۱۱ اضافه شد</span>
+    <a href="page-details.html">
+    <img src="/storage/emulated/0/File-Sharing-Bot/01.jpg" alt="">
+    <div class="title">سریال The Morning Show</div>
+  </div>
+
+  <div class="series-card">
+    <span class="badge"> زیرنویس چسبیده قسمت ۸ از فصل ۱ اضافه شد </span>
+        <a href="page-details.html">
+    <img href="search.html" src="/storage/emulated/0/File-Sharing-Bot/03.jpg" alt="">
+    <span class="link-btn"> دانلود</span>
+  </div>
+
+  <div class="series-card">
+    <span class="badge"> دوبله فارسی قسمت ۱۱ از فصل ۸ اضافه شد </span>
+    <a href="page-details.html">
+    <img src="assest/images/imdb/fiction.jpg" alt="">
+    <div class="title"> Game Of Thrones (2011-2019) </div>
+  </div>
+
+  <div class="series-card">
+    <span class="badge">دیروز</span>
+    <img src="img4.jpg" >
+    <div class="title"> From (2023-) 🎬</div>
+  </div>
+
+  <!-- بقیه تا ۱۰ تا کارت -->
+</div>
+
+      <div class="controls" style="margin-top:10px">
+        <div class="dots" id="dots"></div>
+‌</div>
+</div>
+
+<a href="https://t.me/SeriexDL" target="_blank" class="telegram-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+    کانال تلگرام
+</a>
+
+<style>
+.telegram-button {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #0088cc; /* رنگ آبی تلگرام */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'VazirM', sans-serif; /* فونت وزیر */
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.telegram-button:hover {
+    background-color: #006699;
+}
+
+.telegram-button img {
+    width: 24px;
+    height: 24px;
+    margin-left: 100px;
+}
+</style>
+<a>
+	‌
+طراحی شده توسط 
+@petyr_baelish11
