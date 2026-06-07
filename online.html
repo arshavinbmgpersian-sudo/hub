@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پخش آنلاین | سریکس دی ال</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0b0b0b;
+    color:#fff;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+header{
+    background:#111;
+    padding:15px;
+    text-align:center;
+}
+
+header a{
+    color:#ff6d00;
+    text-decoration:none;
+    font-size:16px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+    text-align:center;
+}
+.container1{
+    max-width:300px;
+    font-size:6px;
+    margin:auto;
+    padding:20px;
+    text-align:center;
+}
+
+.poster{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+.info{
+    color:#ccc;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+video{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    background:#000;
+}
+
+/* حالت افقی موبایل */
+@media screen and (orientation: landscape){
+
+    header,
+    .poster,
+    h1,
+    .info{
+        display:none;
+        text-align:center;
+    }
+
+    .container{
+        width:100vw;
+        height:100vh;
+        max-width:none;
+        padding:0;
+        margin:0;
+        text-align:center;
+    }
+
+    video{
+        width:100vw;
+        height:100vh;
+        object-fit:contain;
+        border-radius:0;
+    }
+}
+
+/* هنگام فول اسکرین */
+body.fullscreen-mode header,
+body.fullscreen-mode .poster,
+body.fullscreen-mode h1,
+body.fullscreen-mode .info{
+    display:none;
+}
+
+body.fullscreen-mode .container{
+    width:100vw;
+    height:100vh;
+    max-width:none;
+    padding:0;
+    margin:0;
+}
+
+body.fullscreen-mode video{
+    width:100vw;
+    height:100vh;
+    border-radius:0;
+    object-fit:contain;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <a href="t.me/SeriexDL">← کانال تلگرام</a>
+</header>
+
+<div class="container">
+
+    <!-- پوستر -->
+
+    <h1>Game Of Thrones</h1>
+
+    <p class="info">
+      S01E01 - 480p HardSub<p>
+    </p>
+
+    <video id="player" controls playsinline>
+        <source src="https://abrehamrahi.ir/o/public/xbHRqqJD/">
+        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+    </video>
+
+</div>
+
+<script>
+const player = document.getElementById("player");
+
+document.addEventListener("fullscreenchange", () => {
+
+    if (document.fullscreenElement) {
+
+        document.body.classList.add("fullscreen-mode");
+
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("landscape").catch(() => {});
+        }
+
+    } else {
+
+        document.body.classList.remove("fullscreen-mode");
+
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
+    }
+});
+
+/* دوبار لمس = فول اسکرین */
+player.addEventListener("dblclick", () => {
+
+    if (!document.fullscreenElement) {
+
+        if (player.requestFullscreen) {
+            player.requestFullscreen();
+        }
+
+    } else {
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+});
+</script>
+<div class="container1">
+
+<h1>تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</h1>
+</div>
+</body>
+</html>
