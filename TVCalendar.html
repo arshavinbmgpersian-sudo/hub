@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سریکس دی ال - جدول پخش هفتگی</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'vazirmatn',sans-serif;
+}
+body{
+background:#081827;
+font-family:'VazirMatn', sans-serif;
+color:#fff;
+padding:15px;
+max-width:600px;
+margin:auto;
+}
+
+.logo{
+text-align:center;
+font-size:32px;
+font-weight:800;
+margin-top:10px;
+}
+
+.logo span{
+color:#e33255;
+}
+
+.subtitle{
+text-align:center;
+font-size:15px;
+color:#aeb8c7;
+margin-top:8px;
+margin-bottom:18px;
+}
+
+/* روزهای هفته */
+
+.days{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:8px;
+margin-bottom:18px;
+}
+
+.day{
+border:none;
+background:#10253d;
+color:#fff;
+height:52px;
+border-radius:12px;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.day.active{
+background:#e33255;
+}
+
+.day:nth-child(1),
+.day:nth-child(2),
+.day:nth-child(3),
+.day:nth-child(4){
+grid-column:span 3;
+}
+
+.day.small{
+grid-column:span 2;
+}
+
+/* لیست سریال ها */
+
+.schedule{
+display:none;
+}
+
+.schedule.active{
+display:block;
+}
+
+.item{
+display:flex;
+align-items:center;
+gap:12px;
+background:#10253d;
+border-radius:14px;
+padding:10px;
+margin-bottom:10px;
+text-decoration:none;
+transition:.25s;
+}
+
+.item:hover{
+transform:translateY(-2px);
+}
+
+.poster{
+width:65px;
+height:90px;
+object-fit:cover;
+border-radius:10px;
+flex-shrink:0;
+}
+
+.info{
+flex:1;
+}
+
+.title{
+font-size:17px;
+font-weight:700;
+color:#fff;
+margin-bottom:7px;
+}
+
+.ep{
+font-size:13px;
+color:#c1cad8;
+}
+
+</style>
+</head>
+<body>
+
+<div class="logo">
+سریکس <span>دی ال</span>
+</div>
+
+<div class="subtitle">
+جدول پخش هفتگی
+</div>
+
+<div class="days">
+
+<button class="day active" onclick="showDay('sat',this)">
+شنبه 
+</button>
+
+<button class="day" onclick="showDay('sun',this)">
+یکشنبه 
+</button>
+
+<button class="day" onclick="showDay('mon',this)">
+دوشنبه 
+</button>
+
+<button class="day" onclick="showDay('tue',this)">
+سه‌شنبه 
+</button>
+
+<button class="day small" onclick="showDay('wed',this)">
+چهارشنبه 
+</button>
+
+<button class="day small" onclick="showDay('thu',this)">
+پنجشنبه 
+</button>
+
+<button class="day small" onclick="showDay('fri',this)">
+جمعه 
+</button>
+
+</div>
+
+<!-- شنبه -->
+
+<div id="sat" class="schedule active">
+
+<a href="the-last-of-us.html" class="item">
+<img src="https://image.tmdb.org/t/p/w300/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg" class="poster">
+<div class="info">
+<div class="title">The Last Of Us</div>
+<div class="ep">فصل 2 - قسمت 5</div>
+</div>
+</a>
+
+<a href="house-of-dragon.html" class="item">
+<img src="https://image.tmdb.org/t/p/w300/z2yahl2uefxDCl0nogcRBstwruJ.jpg" class="poster">
+<div class="info">
+<div class="title">House Of The Dragon</div>
+<div class="ep">فصل 3 - قسمت 1</div>
+</div>
+</a>
+
+</div>
+
+<!-- یکشنبه -->
+
+<div id="sun" class="schedule">
+
+<a href="the-way-home.html" class="item">
+<img src="https://picsum.photos/200/300?1" class="poster">
+<div class="info">
+<div class="title">The Way Home</div>
+<div class="ep">فصل 4 - قسمت 8</div>
+</div>
+</a>
+
+<a href="the-chi.html" class="item">
+<img src="https://picsum.photos/200/300?2" class="poster">
+<div class="info">
+<div class="title">The Chi</div>
+<div class="ep">فصل 8 - قسمت 3</div>
+</div>
+</a>
+
+</div>
+
+<!-- دوشنبه -->
+
+<div id="mon" class="schedule">
+
+<a href="silo.html" class="item">
+<img src="https://picsum.photos/200/300?3" class="poster">
+<div class="info">
+<div class="title">Silo</div>
+<div class="ep">فصل 2 - قسمت 7</div>
+</div>
+</a>
+
+<a href="from.html" class="item">
+<img src="https://picsum.photos/200/300?4" class="poster">
+<div class="info">
+<div class="title">From</div>
+<div class="ep">فصل 3 - قسمت 2</div>
+</div>
+</a>
+
+</div>
+
+<!-- سه شنبه -->
+
+<div id="tue" class="schedule">
+
+<a href="wednesday.html" class="item">
+<img src="https://picsum.photos/200/300?5" class="poster">
+<div class="info">
+<div class="title">Wednesday</div>
+<div class="ep">فصل 2 - قسمت 1</div>
+</div>
+</a>
+
+<a href="severance.html" class="item">
+<img src="https://picsum.photos/200/300?6" class="poster">
+<div class="info">
+<div class="title">Severance</div>
+<div class="ep">فصل 2 - قسمت 4</div>
+</div>
+</a>
+
+</div>
+
+<!-- چهارشنبه -->
+
+<div id="wed" class="schedule">
+
+<a href="reacher.html" class="item">
+<img src="https://picsum.photos/200/300?7" class="poster">
+<div class="info">
+<div class="title">Reacher</div>
+<div class="ep">فصل 3 - قسمت 5</div>
+</div>
+</a>
+
+</div>
+
+<!-- پنجشنبه -->
+
+<div id="thu" class="schedule">
+
+<a href="the-boys.html" class="item">
+<img src="https://picsum.photos/200/300?8" class="poster">
+<div class="info">
+<div class="title">The Boys</div>
+<div class="ep">فصل 5 - قسمت 2</div>
+</div>
+</a>
+
+</div>
+
+<!-- جمعه -->
+
+<div id="fri" class="schedule">
+
+<a 
+
+<div class="info">
+<div class="title">در این روز هیچ سریالی پخش نخواهد شد</div>
+
+</div>
+</a>
+
+</div>
+
+<script>
+
+function showDay(dayId,btn){
+
+document.querySelectorAll('.schedule').forEach(function(item){
+item.classList.remove('active');
+});
+
+document.getElementById(dayId).classList.add('active');
+
+document.querySelectorAll('.day').forEach(function(item){
+item.classList.remove('active');
+});
+
+btn.classList.add('active');
+
+}
+
+</script>
+
+</body>
+</html>
