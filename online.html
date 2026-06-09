@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -32,12 +33,59 @@ header a{
     font-size:16px;
 }
 
+.vip-box{
+    max-width:420px;
+    margin:60px auto;
+    background:#111;
+    border:1px solid #222;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.vip-box h2{
+    margin-bottom:10px;
+}
+
+.vip-box p{
+    color:#bbb;
+    margin-bottom:15px;
+}
+
+.vip-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#1a1a1a;
+    color:#fff;
+    font-family:'Vazirmatn',sans-serif;
+    margin-bottom:10px;
+}
+
+.vip-box button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#ff6d00;
+    color:#fff;
+    cursor:pointer;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+#result{
+    margin-top:10px;
+    font-size:14px;
+}
+
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
     text-align:center;
 }
+
 .container1{
     max-width:300px;
     font-size:6px;
@@ -69,7 +117,6 @@ video{
     background:#000;
 }
 
-/* حالت افقی موبایل */
 @media screen and (orientation: landscape){
 
     header,
@@ -86,7 +133,6 @@ video{
         max-width:none;
         padding:0;
         margin:0;
-        text-align:center;
     }
 
     video{
@@ -97,7 +143,6 @@ video{
     }
 }
 
-/* هنگام فول اسکرین */
 body.fullscreen-mode header,
 body.fullscreen-mode .poster,
 body.fullscreen-mode h1,
@@ -119,32 +164,163 @@ body.fullscreen-mode video{
     border-radius:0;
     object-fit:contain;
 }
+
 </style>
 </head>
 <body>
 
 <header>
-    <a url="t.me/SeriexDL">← کانال تلگرام</a>
+    <a href="https://t.me/SeriexDL">← کانال تلگرام</a>
 </header>
 
-<div class="container">
+<!-- باکس اشتراک -->
 
-    <!-- پوستر -->
+<div id="vip-box" class="vip-box">
 
-    <h1>Game Of Thrones</h1>
+    <h2>فعال‌سازی اشتراک</h2>
 
-    <p class="info">
-      S01E01 - 480p HardSub<p>
+    <p>
+        جهت فعال شدن قابلیت پخش آنلاین، کد اشتراک خود را وارد کنید
     </p>
 
-    <video id="player" controls playsinline>
-        <source src="https://abrehamrahi.ir/o/public/xbHRqqJD/">
-        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-    </video>
+    <input
+        type="text"
+        id="code"
+        placeholder="کد اشتراک">
+
+    <button onclick="checkVip()">
+        ورود
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<!-- محتوای محافظت شده -->
+
+<div id="protected-content" style="display:none;">
+
+    <div class="container">
+
+        <h1>Game Of Thrones</h1>
+
+        <p class="info">
+            S01E01 - 480p HardSub
+        </p>
+
+        <video id="player" controls playsinline>
+            <source src="https://abrehamrahi.ir/o/public/xbHRqqJD/">
+            مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+        </video>
+
+    </div>
+
+    <div class="container1">
+        <h1>تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</h1>
+    </div>
 
 </div>
 
 <script>
+
+async function checkVip(){
+
+    const code =
+    document.getElementById("code").value.trim();
+
+    if(!code){
+        document.getElementById("result").innerHTML =
+        "کد اشتراک را وارد کنید";
+        return;
+    }
+
+    try{
+
+        const res = await fetch("/check",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:code
+            })
+
+        });
+
+        const data = await res.json();
+
+        if(data.valid){
+
+            localStorage.setItem(
+                "vipCode",
+                code
+            );
+
+            document.getElementById("vip-box")
+            .style.display = "none";
+
+            document.getElementById("protected-content")
+            .style.display = "block";
+
+        }else{
+
+            document.getElementById("result")
+            .innerHTML = "❌ " + data.message;
+
+        }
+
+    }catch(err){
+
+        document.getElementById("result")
+        .innerHTML =
+        "خطا در ارتباط با سرور";
+
+    }
+
+}
+
+window.addEventListener("load", async()=>{
+
+    const savedCode =
+    localStorage.getItem("vipCode");
+
+    if(!savedCode) return;
+
+    try{
+
+        const res = await fetch("/check",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:savedCode
+            })
+
+        });
+
+        const data = await res.json();
+
+        if(data.valid){
+
+            document.getElementById("vip-box")
+            .style.display = "none";
+
+            document.getElementById("protected-content")
+            .style.display = "block";
+
+        }
+
+    }catch(e){}
+
+});
+
 const player = document.getElementById("player");
 
 document.addEventListener("fullscreenchange", () => {
@@ -164,10 +340,11 @@ document.addEventListener("fullscreenchange", () => {
         if (screen.orientation && screen.orientation.unlock) {
             screen.orientation.unlock();
         }
+
     }
+
 });
 
-/* دوبار لمس = فول اسکرین */
 player.addEventListener("dblclick", () => {
 
     if (!document.fullscreenElement) {
@@ -181,12 +358,12 @@ player.addEventListener("dblclick", () => {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         }
-    }
-});
-</script>
-<div class="container1">
 
-<h1>تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</h1>
-</div>
+    }
+
+});
+
+</script>
+
 </body>
 </html>
