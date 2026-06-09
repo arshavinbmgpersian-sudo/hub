@@ -166,9 +166,10 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 
 </div>
 </div>
-<div class="wrapper" id="protected-content" style="display:none;">
+<div class="wrapper" id="protected-content" style="display:noe;">
             <div style="font-size:30px;color:var(--muted); text-align:center; margin-top: 2px;">Game Of Thrones</div>
-        
+        </div>
+ 
 
     <!-- زبان اصلی -->
     <div class="item main">
@@ -679,9 +680,11 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
                                     <a href="#" class="download">دانلود</a>
                                     <a href="#" class="watch">تماشای آنلاین</a>
                                 </div>
-                                            <div style="font-size:10px;color:var(--muted); text-align:center; margin-top: 2px;">♥</div>
-            <div style="font-size:10px;color:var(--muted); text-align:center; margin-top: 2px;">تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</div>
-        </div> <div style="text-align:center;" </div>✨ S e r i e x D L ✨ <div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+
                             </div>
 
                         </div>
@@ -694,192 +697,4 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 
         </div>
 
-    </div>
-
-</div>
-
-<script>
-
-function closeAllInside(container){
-
-    container.querySelectorAll('.content').forEach(el=>{
-        el.style.display='none';
-    });
-
-    container.querySelectorAll('.open').forEach(el=>{
-        el.classList.remove('open');
-    });
-
-}
-
-/* بخش اصلی */
-document.querySelectorAll('.main > .header').forEach(btn=>{
-
-    btn.onclick=function(){
-
-        const parent=this.parentElement;
-        const content=this.nextElementSibling;
-        const opened=content.style.display==='block';
-
-        document.querySelectorAll('.main').forEach(item=>{
-
-            if(item!==parent){
-
-                item.classList.remove('open');
-
-                const c=item.querySelector(':scope > .content');
-                c.style.display='none';
-
-                closeAllInside(c);
-
-            }
-
-        });
-
-        if(opened){
-
-            content.style.display='none';
-            parent.classList.remove('open');
-            closeAllInside(content);
-
-        }else{
-
-            content.style.display='block';
-            parent.classList.add('open');
-
-        }
-
-    };
-
-});
-
-/* فصل */
-document.querySelectorAll('.season-header').forEach(btn=>{
-
-    btn.onclick=function(){
-
-        const parent=this.parentElement;
-        const content=this.nextElementSibling;
-        const opened=content.style.display==='block';
-
-        parent.parentElement
-        .querySelectorAll(':scope > .season')
-        .forEach(item=>{
-
-            if(item!==parent){
-
-                item.classList.remove('open');
-
-                const c=item.querySelector(':scope > .content');
-                c.style.display='none';
-
-                closeAllInside(c);
-
-            }
-
-        });
-
-        if(opened){
-
-            content.style.display='none';
-            parent.classList.remove('open');
-            closeAllInside(content);
-
-        }else{
-
-            content.style.display='block';
-            parent.classList.add('open');
-
-        }
-
-    };
-
-});
-
-/* قسمت */
-document.querySelectorAll('.episode-header').forEach(btn=>{
-
-    btn.onclick=function(){
-
-        const parent=this.parentElement;
-        const content=this.nextElementSibling;
-        const opened=content.style.display==='block';
-
-        parent.parentElement
-        .querySelectorAll(':scope > .episode')
-        .forEach(item=>{
-
-            if(item!==parent){
-
-                item.classList.remove('open');
-
-                item.querySelector(':scope > .content')
-                    .style.display='none';
-
-            }
-
-        });
-
-        if(opened){
-
-            content.style.display='none';
-            parent.classList.remove('open');
-
-        }else{
-
-            content.style.display='block';
-            parent.classList.add('open');
-
-        }
-
-    };
-
-});
-
-</script>
-<script>
-
-window.addEventListener("load", async()=>{
-
-    const code = localStorage.getItem("vipCode");
-
-    if(!code){
-        return;
-    }
-
-    try{
-
-        const res = await fetch("/check",{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-                code:code
-            })
-
-        });
-
-        const data = await res.json();
-
-        if(data.valid){
-
-            document.getElementById("vip-message")
-            .style.display = "none";
-
-            document.getElementById("protected-content")
-            .style.display = "block";
-
-        }
-
-    }catch(e){}
-
-});
-
-</script>
-
-</body>
-</html>
+    </div
