@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>باکس دانلود</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#f5f7fa;
+    padding:15px;
+}
+
+.wrapper{
+    max-width:900px;
+    margin:auto;
+}
+
+.item{
+    margin-bottom:8px;
+}
+
+.header{
+    background:#dff4df;
+    border:1px solid #cde8cd;
+    border-radius:12px;
+    padding:12px 15px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+    font-weight:700;
+}
+
+.content{
+    display:none;
+    padding-top:6px;
+}
+
+.season-header{
+    background:#fff;
+    border:1px solid #e6e6e6;
+    border-radius:10px;
+    padding:10px 12px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    font-weight:600;
+}
+
+.episode-header{
+    background:#ececec;
+    border:1px solid #ececec;
+    border-radius:9px;
+    padding:9px 12px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+}
+
+.quality{
+    background:#eeeddd;
+    border:1px solid #ececec;
+    border-radius:10px;
+    padding:8px 10px;
+    margin-bottom:5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.links{
+    display:flex;
+    gap:6px;
+}
+
+.links a{
+    text-decoration:none;
+    padding:6px 10px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.download{
+    background:#ffd54f;
+    color:#222;
+}
+
+.watch{
+    background:#ff6b6b;
+    color:#fff;
+}
+
+.arrow{
+    transition:.25s;
+}
+
+.open > .header .arrow,
+.open > .season-header .arrow,
+.open > .episode-header .arrow{
+    transform:rotate(180deg);
+}
+
+</style>
+</head>
+<body>
+<div id="vip-message" style="
+max-width:500px;
+margin:30px auto;
+background:#fff;
+padding:20px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+">
+
+    <h2 style="
+    color:#ff6d00;
+    margin-bottom:10px;
+    ">
+        
+    </h2>
+
+    <p style="
+    color:balck;
+    line-height:2;
+    font-size:13px;
+    margin-bottom:15px;
+    ">
+        جهت مشاهده لینک های دانلود ابتدا اشتراک ویژه تهیه نمایید
+    </p>
+
+    <a href="/vip.html" style="
+    display:block;
+    width:100%;
+    padding:8px;
+    background:#ff6d00;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:700;
+    ">
+        خرید اشتراک ویژه
+    </a>
+
+</div>
+</div>
+<div id="protected-content" style="display:none;">
+            <div style="font-size:30px;color:var(--muted); text-align:center; margin-top: 2px;">Game Of Thrones</div>
+        </div>
+ 
+<div class="wrapper" style="display:none;">
+
+    <!-- زبان اصلی -->
+    <div class="item main">
+
+        <div class="header">
+            <span>🎬 زبان اصلی</span>
+            <span class="arrow">▼</span>
+        </div>
+
+        <div class="content">
+
+            <div class="item season">
+
+                <div class="season-header">
+                    <span>فصل 1</span>
+                    
+                    <span class="arrow">▼</span>
+                    </div>
+                                    <div class="content">
+                
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 1</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>480p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+   
+                                </div>
+                            </div>
+
+                            <div class="quality">
+                                <span>720p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 2</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 3</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 4</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                                                    </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 5</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                                                    </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 6</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                                                    </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 7</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                                    </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 8</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 9</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 1 - قسمت 10</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+</div>
+                    
+                        
+                                
+                        </div>        
+                                    
+                                    <div class="item season">
+                                    <div class="season-header">
+                    <span>فصل 2</span>
+                        
+                    
+                    <span class="arrow">▼</span>
+                                                        
+                    
+                    
+                    
+                </div>
+                
+
+                <div class="content">
+                
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>قسمت 1</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>480p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                </div>
+                            </div>
+
+                            <div class="quality">
+                                <span>720p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>قسمت 2</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+                                    <div class="item season">
+                                    <div class="season-header">
+                    <span>فصل 3</span>
+                        
+                    
+                    <span class="arrow">▼</span>
+                                                        
+                    
+                    
+                    
+                </div>
+                
+
+                <div class="content">
+                
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 3 - قسمت 1</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>480p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                </div>
+                            </div>
+
+                            <div class="quality">
+                                <span>720p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 3 - قسمت 2</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                                        <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>فصل 3 - قسمت 3</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p HardSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+</div>
+</div>
+    </div>
+
+    <!-- زیرنویس فارسی -->
+    <div class="item main">
+
+        <div class="header">
+            <span>💬 زیرنویس فارسی</span>
+            <span class="arrow">▼</span>
+        </div>
+
+        <div class="content">
+
+            <div class="item season">
+
+                <div class="season-header">
+                    <span>فصل 1</span>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="content">
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>قسمت 1</span>
+                            <span class="arrow">▼</span>
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>1080p SoftSub</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- دوبله فارسی -->
+    <div class="item main">
+
+        <div class="header">
+            <span>🎙 دوبله فارسی</span>
+            <span class="arrow">▼</span>
+        </div>
+
+        <div class="content">
+
+            <div class="item season">
+
+                <div class="season-header">
+                    <span>فصل 1</span>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="content">
+
+                    <div class="item episode">
+
+                        <div class="episode-header">
+                            <span>قسمت 1</span>
+                            <span class="arrow">▼</span>
+                            
+                        </div>
+
+                        <div class="content">
+
+                            <div class="quality">
+                                <span>720p Dubbed</span>
+                                <div class="links">
+                                    <a href="#" class="download">دانلود</a>
+                                    <a href="#" class="watch">تماشای آنلاین</a>
+                                </div>
+                                            <div style="font-size:10px;color:var(--muted); text-align:center; margin-top: 2px;">♥</div>
+            <div style="font-size:10px;color:var(--muted); text-align:center; margin-top: 2px;">تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</div>
+        </div> <div style="text-align:center;" </div>✨ S e r i e x D L ✨ <div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function closeAllInside(container){
+
+    container.querySelectorAll('.content').forEach(el=>{
+        el.style.display='none';
+    });
+
+    container.querySelectorAll('.open').forEach(el=>{
+        el.classList.remove('open');
+    });
+
+}
+
+/* بخش اصلی */
+document.querySelectorAll('.main > .header').forEach(btn=>{
+
+    btn.onclick=function(){
+
+        const parent=this.parentElement;
+        const content=this.nextElementSibling;
+        const opened=content.style.display==='block';
+
+        document.querySelectorAll('.main').forEach(item=>{
+
+            if(item!==parent){
+
+                item.classList.remove('open');
+
+                const c=item.querySelector(':scope > .content');
+                c.style.display='none';
+
+                closeAllInside(c);
+
+            }
+
+        });
+
+        if(opened){
+
+            content.style.display='none';
+            parent.classList.remove('open');
+            closeAllInside(content);
+
+        }else{
+
+            content.style.display='block';
+            parent.classList.add('open');
+
+        }
+
+    };
+
+});
+
+/* فصل */
+document.querySelectorAll('.season-header').forEach(btn=>{
+
+    btn.onclick=function(){
+
+        const parent=this.parentElement;
+        const content=this.nextElementSibling;
+        const opened=content.style.display==='block';
+
+        parent.parentElement
+        .querySelectorAll(':scope > .season')
+        .forEach(item=>{
+
+            if(item!==parent){
+
+                item.classList.remove('open');
+
+                const c=item.querySelector(':scope > .content');
+                c.style.display='none';
+
+                closeAllInside(c);
+
+            }
+
+        });
+
+        if(opened){
+
+            content.style.display='none';
+            parent.classList.remove('open');
+            closeAllInside(content);
+
+        }else{
+
+            content.style.display='block';
+            parent.classList.add('open');
+
+        }
+
+    };
+
+});
+
+/* قسمت */
+document.querySelectorAll('.episode-header').forEach(btn=>{
+
+    btn.onclick=function(){
+
+        const parent=this.parentElement;
+        const content=this.nextElementSibling;
+        const opened=content.style.display==='block';
+
+        parent.parentElement
+        .querySelectorAll(':scope > .episode')
+        .forEach(item=>{
+
+            if(item!==parent){
+
+                item.classList.remove('open');
+
+                item.querySelector(':scope > .content')
+                    .style.display='none';
+
+            }
+
+        });
+
+        if(opened){
+
+            content.style.display='none';
+            parent.classList.remove('open');
+
+        }else{
+
+            content.style.display='block';
+            parent.classList.add('open');
+
+        }
+
+    };
+
+});
+
+</script>
+<script>
+
+window.addEventListener("load", async()=>{
+
+    const code = localStorage.getItem("vipCode");
+
+    if(!code){
+        return;
+    }
+
+    try{
+
+        const res = await fetch("/check",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:code
+            })
+
+        });
+
+        const data = await res.json();
+
+        if(data.valid){
+
+            document.getElementById("vip-message")
+            .style.display = "none";
+
+            document.getElementById("protected-content")
+            .style.display = "block";
+
+        }
+
+    }catch(e){}
+
+});
+
+</script>
+
+</body>
+</html>
