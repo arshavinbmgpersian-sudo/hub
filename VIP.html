@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>فعال سازی اشتراک ویژه</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#0b0b0b;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    color:#fff;
+}
+
+.box{
+    width:100%;
+    max-width:420px;
+    background:#111;
+    padding:25px;
+    border-radius:16px;
+    border:1px solid #222;
+}
+
+.title{
+    text-align:center;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.desc{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:20px;
+    line-height:1.8;
+}
+
+input{
+    width:100%;
+    height:48px;
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:12px;
+    padding:0 15px;
+    color:#fff;
+    font-family:'Vazirmatn',sans-serif;
+    margin-bottom:12px;
+}
+
+input:focus{
+    outline:none;
+    border:1px solid #333;
+    box-shadow:none;
+}
+
+input::placeholder{
+    color:#777;
+}
+
+button{
+    width:100%;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:#ff6d00;
+    color:#fff;
+    font-family:'Vazirmatn',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+#result{
+    margin-top:15px;
+    text-align:center;
+    line-height:2;
+}
+
+.success{
+    color:#4caf50;
+}
+
+.error{
+    color:#ff5252;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#666;
+    font-size:12px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+
+    <div class="title">
+        فعال سازی اشتراک ویژه
+    </div>
+
+    <div class="desc">
+        کد اشتراک خود را وارد کنید
+    </div>
+
+    <input
+        type="text"
+        id="code"
+        placeholder="کد اشتراک">
+
+    <button onclick="activateVip()">
+        فعال سازی اشتراک
+    </button>
+
+    <div id="result"></div>
+
+    <div class="footer">
+        سریکس دی ال
+    </div>
+
+</div>
+
+<script>
+
+const resultBox =
+document.getElementById("result");
+
+document.getElementById("code")
+.addEventListener("keypress", function(e){
+
+    if(e.key === "Enter"){
+        activateVip();
+    }
+
+});
+
+async function activateVip(){
+
+    const code =
+    document.getElementById("code")
+    .value.trim();
+
+    if(!code){
+
+        resultBox.innerHTML =
+        '<div class="error">کد اشتراک را وارد کنید</div>';
+
+        return;
+    }
+
+    resultBox.innerHTML =
+    'در حال بررسی...';
+
+    try{
+
+        const res = await fetch("/check",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:code
+            })
+
+        });
+
+        const data = await res.json();
+
+        if(data.valid){
+
+            localStorage.setItem(
+                "vipCode",
+                code
+            );
+
+            resultBox.innerHTML =
+            `<div class="success">
+            ✅ اشتراک ویژه شما با موفقیت فعال شد
+
+            </div>`;
+
+        }else{
+
+            resultBox.innerHTML =
+            `<div class="error">
+            ❌ ${data.message || "کد اشتراک نامعتبر است"}
+            </div>`;
+
+        }
+
+    }catch(e){
+
+        resultBox.innerHTML =
+        `<div class="error">
+        خطا در ارتباط با سرور
+        </div>`;
+
+    }
+
+}
+
+/* ورود خودکار اگر قبلاً کد ذخیره شده باشد */
+
+window.addEventListener("load", async()=>{
+
+    const code =
+    localStorage.getItem("vipCode");
+
+    if(!code) return;
+
+    try{
+
+        const res = await fetch("/check",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:code
+            })
+
+        });
+
+        const data = await res.json();
+
+        if(data.valid){
+
+            resultBox.innerHTML =
+            `<div class="success">
+            ✅ اشتراک ویژه شما فعال است
+            </div>`;
+
+        }else{
+
+            localStorage.removeItem("vipCode");
+
+        }
+
+    }catch(e){}
+
+});
+
+</script>
+
+</body>
+</html>
