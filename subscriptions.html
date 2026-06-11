@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خرید اشتراک ویژه</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Vazirmatn,sans-serif;
+}
+
+body{
+background:#0b1220;
+color:#fff;
+padding:20px;
+}
+
+.container{
+max-width:650px;
+margin:auto;
+}
+
+.header{
+background:#ff8a00;
+color:#111;
+padding:12px;
+border-radius:14px;
+text-align:center;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.sub{
+text-align:center;
+color:#94a3b8;
+font-size:13px;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:15px;
+}
+
+.plan{
+background:#111827;
+border:1px solid #1f2937;
+padding:14px;
+border-radius:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.plan.active{
+border-color:#3b82f6;
+}
+
+.plan h3{
+font-size:14px;
+margin-bottom:5px;
+}
+
+.plan p{
+font-size:13px;
+color:#cbd5e1;
+}
+
+.year{
+grid-column:1/-1;
+}
+
+.old{
+text-decoration:line-through;
+color:#ef4444;
+font-size:12px;
+}
+
+.card{
+background:#111827;
+padding:18px;
+border-radius:14px;
+margin-bottom:15px;
+}
+
+.card-number{
+font-size:20px;
+font-weight:700;
+margin:10px 0;
+word-break:break-all;
+}
+
+.copy-btn,
+.submit-btn,
+.track-copy,
+.new-order{
+border:none;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+width:100%;
+font-weight:600;
+}
+
+.copy-btn{
+background:#1e293b;
+color:white;
+}
+
+.submit-btn{
+background:#2563eb;
+color:white;
+margin-top:10px;
+}
+
+.track-copy{
+background:#1e293b;
+color:white;
+margin-top:10px;
+}
+
+.new-order{
+background:#1e293b;
+color:white;
+margin-top:15px;
+}
+
+.copy-status{
+text-align:center;
+font-size:12px;
+color:#94a3b8;
+margin-top:6px;
+}
+
+.form{
+background:#111827;
+padding:18px;
+border-radius:14px;
+}
+
+input{
+width:100%;
+padding:12px;
+background:#1e293b;
+border:1px solid transparent;
+border-radius:10px;
+color:white;
+margin-bottom:10px;
+}
+
+input.error{
+border-color:#ef4444;
+}
+
+.error-text{
+font-size:12px;
+color:#ef4444;
+margin-top:-5px;
+margin-bottom:10px;
+}
+
+.row{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:10px;
+}
+
+.row input[type=checkbox]{
+width:auto;
+margin:0;
+}
+
+.success{
+display:none;
+text-align:center;
+background:#111827;
+padding:25px;
+border-radius:16px;
+}
+
+.track-box{
+background:#1e293b;
+padding:15px;
+border-radius:12px;
+margin:15px 0;
+}
+
+.track-code{
+font-size:18px;
+font-weight:700;
+color:#facc15;
+}
+.payment-section{
+display:none;
+animation:fade .25s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.plans{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:15px;
+}
+
+.plan{
+text-align:center;
+}
+
+.year{
+grid-column:1/-1;
+}
+
+.plan.active{
+border-color:#3b82f6;
+background:#172554;
+}
+.status-box{
+margin-top:15px;
+padding:15px;
+border-radius:12px;
+background:#1e293b;
+}
+
+.support{
+margin-top:15px;
+}
+
+.support a{
+color:#60a5fa;
+text-decoration:none;
+}
+
+@media(max-width:600px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div id="mainPage">
+
+<div class="header">
+خرید اشتراک ویژه
+</div>
+
+<div class="sub">
+فعالسازی پس از بررسی رسید پرداخت
+</div>
+
+<div class="grid plans">
+
+<div class="plan" data-plan="1 ماهه | 49,000 تومان">
+<h3>1 ماهه</h3>
+<p>49,000 تومان</p>
+</div>
+
+<div class="plan" data-plan="2 ماهه | 89,000 تومان">
+<h3>2 ماهه</h3>
+<p>89,000 تومان</p>
+</div>
+
+<div class="plan" data-plan="3 ماهه | 139,000 تومان">
+<h3>3 ماهه</h3>
+<p>139,000 تومان</p>
+</div>
+
+<div class="plan" data-plan="6 ماهه | 259,000 تومان">
+<h3>6 ماهه</h3>
+<p>259,000 تومان</p>
+</div>
+
+<div class="plan year" data-plan="1 ساله | 399,000 تومان">
+<div class="old">509,000 تومان</div>
+<h3>1 ساله 🔥</h3>
+<p>399,000 تومان</p>
+</div>
+
+</div>
+
+
+<div class="card">
+<div>شماره کارت</div>
+
+<div class="card-number" id="cardNumber">
+6219861881013519
+</div>
+
+<div>
+ابوالفضل بهروز
+</div>
+
+<br>
+
+<button class="copy-btn" onclick="copyCard()">
+کپی شماره کارت
+</button>
+
+<div class="copy-status" id="copyStatus"></div>
+</div>
+
+<div class="form">
+
+<input
+type="text"
+id="fullname"
+placeholder="نام و نام خانوادگی">
+
+<input
+type="tel"
+id="phone"
+maxlength="11"
+placeholder="شماره موبایل">
+
+<div class="error-text" id="phoneError"></div>
+
+<input
+type="text"
+id="telegramId"
+placeholder="آیدی تلگرام">
+
+<div class="row">
+<input type="checkbox" id="noTelegram">
+<label for="noTelegram">آیدی تلگرام ندارم</label>
+</div>
+
+<input
+type="file"
+id="receipt"
+accept="image/*">
+
+<button class="submit-btn" onclick="submitForm()">
+ارسال و بررسی پرداخت
+</button>
+
+</div>
+
+</div>
+
+<div class="success" id="successPage">
+
+<h2>✅ درخواست شما ثبت شد</h2>
+
+<div class="track-box">
+
+<div>کد پیگیری</div>
+
+<div class="track-code" id="trackingCode"></div>
+
+<button class="track-copy" onclick="copyTracking()">
+کپی کد پیگیری
+</button>
+
+<div class="copy-status" id="trackingStatus"></div>
+
+</div>
+
+<div class="status-box" id="statusBox">
+⏳ درخواست شما در حال بررسی است
+</div>
+
+<p style="margin-top:15px">
+درخواست شما حداکثر تا 11 ساعت آینده بررسی می‌شود.
+</p>
+
+<div class="support">
+<a href="https://t.me/SeriexDL_Support" target="_blank">
+پشتیبانی
+</a>
+</div>
+
+<button class="new-order" onclick="newOrder()">
+خرید اشتراک جدید
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const WORKER_URL =
+"https://series1.seriexdl.workers.dev";
+
+let selectedPlan = "";
+
+document.querySelectorAll(".plan").forEach(item=>{
+item.addEventListener("click",()=>{
+document.querySelectorAll(".plan")
+.forEach(p=>p.classList.remove("active"));
+
+item.classList.add("active");
+
+selectedPlan =
+item.dataset.plan;
+});
+});
+
+function copyCard(){
+
+navigator.clipboard.writeText(
+document.getElementById("cardNumber").innerText
+);
+
+const el =
+document.getElementById("copyStatus");
+
+el.innerText =
+el.innerText === "کپی شد ✓"
+?
+"قبلاً کپی شده ✓"
+:
+"کپی شد ✓";
+}
+
+function validatePhone(phone){
+return /^09\d{9}$/.test(phone);
+}
+
+async function submitForm(){
+
+const fullname =
+document.getElementById("fullname").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const telegram =
+document.getElementById("telegramId").value.trim();
+
+const noTelegram =
+document.getElementById("noTelegram").checked;
+
+const receipt =
+document.getElementById("receipt").files[0];
+
+const phoneInput =
+document.getElementById("phone");
+
+const phoneError =
+document.getElementById("phoneError");
+
+phoneInput.classList.remove("error");
+phoneError.innerText="";
+
+let selectedPlan = "";
+
+document.querySelectorAll(".plan").forEach(item=>{
+item.addEventListener("click",()=>{
+
+document.querySelectorAll(".plan")
+.forEach(p=>p.classList.remove("active"));
+
+item.classList.add("active");
+
+selectedPlan = item.dataset.plan;
+
+// نمایش فرم بعد از انتخاب پلن
+document.getElementById("paymentSection").style.display = "block";
+
+// اسکرول نرم
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+});
+});
+if(fullname.length < 3){
+alert("نام و نام خانوادگی را وارد کنید");
+return;
+}
+
+if(!validatePhone(phone)){
+phoneInput.classList.add("error");
+phoneError.innerText =
+"شماره موبایل باید 11 رقم و با 09 شروع شود";
+return;
+}
+
+if(!telegram && !noTelegram){
+alert("آیدی تلگرام را وارد کنید یا گزینه آیدی ندارم را فعال کنید");
+return;
+}
+
+if(!receipt){
+alert("رسید پرداخت را آپلود کنید");
+return;
+}
+
+const formData = new FormData();
+
+formData.append("fullname",fullname);
+formData.append("phone",phone);
+formData.append("telegram_id",telegram);
+formData.append("plan",selectedPlan);
+formData.append("receipt",receipt);
+
+try{
+
+const res = await fetch(
+WORKER_URL + "/api/create-subscription",
+{
+method:"POST",
+body:formData
+}
+);
+
+const data = await res.json();
+
+if(!data.success){
+alert("خطا در ثبت درخواست");
+return;
+}
+
+localStorage.setItem(
+"trackingCode",
+data.tracking_code
+);
+
+showSuccess(
+data.tracking_code
+);
+
+}catch(err){
+
+alert("خطا در ارتباط با سرور");
+
+}
+
+}
+
+function showSuccess(code){
+
+document.getElementById("mainPage")
+.style.display="none";
+
+document.getElementById("successPage")
+.style.display="block";
+
+document.getElementById("trackingCode")
+.innerText=code;
+
+checkStatus(code);
+}
+
+async function checkStatus(code){
+
+try{
+
+const res = await fetch(
+WORKER_URL +
+"/api/status?tracking=" +
+encodeURIComponent(code)
+);
+
+const data = await res.json();
+
+const box =
+document.getElementById("statusBox");
+
+if(data.status==="approved"){
+
+box.innerHTML =
+`✅ اشتراک شما تایید شد<br><br>کد فعالسازی:<br><b>${data.activation_code}</b>`;
+
+}else{
+
+box.innerHTML =
+"⏳ درخواست شما در حال بررسی است";
+
+}
+
+}catch(e){}
+
+}
+
+function copyTracking(){
+
+navigator.clipboard.writeText(
+document.getElementById("trackingCode").innerText
+);
+
+const el =
+document.getElementById("trackingStatus");
+
+el.innerText =
+el.innerText === "کپی شد ✓"
+?
+"قبلاً کپی شده ✓"
+:
+"کپی شد ✓";
+}
+
+function newOrder(){
+
+localStorage.removeItem(
+"trackingCode"
+);
+
+location.reload();
+
+}
+
+window.onload = ()=>{
+
+const code =
+localStorage.getItem("trackingCode");
+
+if(code){
+
+showSuccess(code);
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
