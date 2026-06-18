@@ -755,7 +755,17 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 
 <script>
 
-function closeAllInside(container){
+            parent.classList.add('open');
+
+        }
+
+    };
+
+});
+
+</script>
+
+    function closeAllInside(container){
 
     container.querySelectorAll('.content').forEach(el=>{
         el.style.display='none';
@@ -774,7 +784,7 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
 
         const parent=this.parentElement;
         const content=this.nextElementSibling;
-        const opened=content.style.display==='';
+        const opened=content.style.display==='block';
 
         document.querySelectorAll('.main').forEach(item=>{
 
@@ -923,10 +933,10 @@ window.addEventListener("load", async()=>{
         if(data.valid){
 
             document.getElementById("vip-message")
-            .style.display = "";
+            .style.display = "open";
 
             document.getElementById("protected-content")
-            .style.display = "";
+            .style.display = "open";
 
         }
 
@@ -941,4 +951,4 @@ window.addEventListener("load", async()=>{
 
 
             <div style="font-family:'Vazirmatn',sans-serif;font-weight:500;font-size:12px;color:var(--muted); text-align:center; margin-top: 2px;">تمامی حقوق برای وبسایت سریکس دی ال محفوظ است</div>
-                </div>
+</div>
