@@ -758,7 +758,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 function closeAllInside(container){
 
     container.querySelectorAll('.content').forEach(el=>{
-        el.style.display='';
+        el.style.display='none';
     });
 
     container.querySelectorAll('.open').forEach(el=>{
@@ -783,7 +783,7 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
                 item.classList.remove('open');
 
                 const c=item.querySelector(':scope > .content');
-                c.style.display='';
+                c.style.display='none';
 
                 closeAllInside(c);
 
@@ -793,7 +793,7 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
 
         if(opened){
 
-            content.style.display='';
+            content.style.display='none';
             parent.classList.remove('open');
             closeAllInside(content);
 
