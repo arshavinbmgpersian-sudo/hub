@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>اشتراک ویژه | سریکس دی ال</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --orange:#ff7a00;
+    --orange-light:#ff9d3d;
+    --bg:#0b0b0b;
+    --card:#161616;
+    --border:#262626;
+    --text:#ffffff;
+    --muted:#9f9f9f;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:15px;
+    margin-top:0px;
+   
+}
+
+.header h1{
+    color:var(--orange);
+    font-size:30px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.header p{
+    color:#cfcfcf;
+    font-size:14px;
+}
+
+.plans{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.plan{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:14px;
+}
+
+.plan h2{
+    color:var(--orange);
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.plan ul{
+    list-style:none;
+}
+
+.plan ul li{
+    font-size:13px;
+    color:#dddddd;
+    margin-bottom:4px;
+}
+
+.notice{
+    margin-top:14px;
+    background:rgba(255,122,0,.08);
+    border:1px solid rgba(255,122,0,.2);
+    border-radius:14px;
+    padding:12px;
+    text-align:center;
+    color:#e4e4e4;
+    font-size:13px;
+}
+
+.support-box{
+    margin-top:14px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:6px;
+    height:140px;
+    text-align:center;
+}
+.copy-box{
+    display:inline-block;
+    margin-top:12px;
+    padding:5px 10px;
+    border:1px solid #303030;
+    border-radius:10px;
+    background:#111;
+    color:#bdbdbd;
+    font-size:12px;
+    cursor:pointer;
+    user-select:none;
+    transition:.2s;
+}
+
+.copy-box:hover{
+    border-color:#ff7a00;
+    color:#ff7a00;
+}
+.support-title{
+    color:#d7d7d7;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.support-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:#fff;
+    margin-top:-5px;
+    background:linear-gradient(135deg,var(--orange),var(--orange-light));
+    padding:10px 24px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.copy-id{
+    margin-top:12px;
+    color:#9c9c9c;
+    font-size:11px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.copy-id:hover{
+    color:var(--orange);
+}
+
+#copied{
+    margin-top:6px;
+    color:var(--orange);
+    font-size:12px;
+    opacity:0;
+    transition:.3s;
+}
+
+.footer{
+    text-align:center;
+    margin-top:18px;
+    color:#777;
+    font-size:12px;
+    border-top:1px solid #1f1f1f;
+    padding-top:14px;
+}
+
+@media(max-width:600px){
+
+.plans{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.plan{
+    padding:12px;
+}
+
+.price{
+    font-size:18px;
+}
+
+.header h1{
+    font-size:26px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>اشتراک ویژه سریکس دی ال</h1>
+        <p>قیمت و پلن های اشتراک</p>
+    </div>
+
+    <div class="plans">
+
+        <div class="plan">
+            <h2>پلن ۱ ماهه</h2>
+            <div class="price">49,000 تومان</div>
+            <ul>
+            <li>✓ دسترسی کامل به وبسایت</li>
+                <li>✓ عضویت در کانال VIP</li>
+                <li>✓ امکان دانلود مستقیم</li>
+                <li>✓ امکان پخش آنلاین</li>     
+                <li>✓ امکان درخواست ۵ سریال</li>
+                
+            </ul>
+        </div>
+
+        <div class="plan">
+            <h2>پلن ۲ ماهه</h2>
+            <div class="price">89,000 تومان</div>
+            <ul>
+            <li>✓ دسترسی کامل به وبسایت</li>
+                <li>✓ عضویت در کانال VIP</li>
+                <li>✓ امکان دانلود مستقیم</li>
+                <li>✓ امکان پخش آنلاین</li>     
+                <li>✓ امکان درخواست ۹ سریال</li>
+            </ul>
+        </div>
+
+        <div class="plan">
+            <h2>پلن ۳ ماهه</h2>
+            <div class="price">139,000 تومان</div>
+            <ul>
+            <li>✓ دسترسی کامل به وبسایت</li>
+                <li>✓ عضویت در کانال VIP</li>
+                <li>✓ امکان دانلود مستقیم</li>
+                <li>✓ امکان پخش آنلاین</li>     
+                <li>✓ امکان درخواست ۱۵ سریال</li>
+                <li>✓ پشتیبانی اختصاصی</li>
+            </ul>
+        </div>
+
+        <div class="plan">
+            <h2>پلن ۶ ماهه</h2>
+            <div class="price">249,000 تومان</div>
+            <ul>
+                <li>✓ دسترسی کامل به وبسایت</li>
+                <li>✓ عضویت در کانال VIP</li>
+                <li>✓ امکان دانلود مستقیم</li>
+                <li>✓ امکان پخش آنلاین</li>     
+                <li>✓ امکان درخواست نامحدود</li>
+                <li>✓ پشتیبانی اختصاصی</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        ⚠️ به دلیل غیرفعال بودن درگاه پرداخت ، در حال حاضر تهیه و خرید اشتراک فقط از طریق پشتیبانی تلگرام امکان پذیر است
+    </div>
+
+    <div class="support-box">
+
+        <div class="support-title">
+           جهت خرید و تمدید اشتراک به پشتیبانی تلگرام پیام بدید 
+        </div>
+
+        <a href="https://t.me/SeriexSupport"
+           target="_blank"
+           class="support-btn">
+            پشتیبانی تلگرام
+        </a>
+  ‌
+        <div class="support-title">
+           با زدن رو COPY ID آیدی پشتیبانی کپی میشه!
+        
+        <div class="copy-box" onclick="copyId()">
+            COPY ID
+        </div>
+
+        <div id="copied">
+           آیدی کپی شد!
+        </div>
+
+    </div>
+
+    <div class="footer">
+        تمامی حقوق برای سریکس دی ال محفوظ است ©
+    </div>
+
+</div>
+
+<script>
+
+function copyId(){
+
+navigator.clipboard.writeText("@SeriexSupport");
+
+const copied = document.getElementById("copied");
+
+copied.style.opacity = "1";
+
+setTimeout(function(){
+    copied.style.opacity = "0";
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
