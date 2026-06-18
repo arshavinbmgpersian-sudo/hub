@@ -758,7 +758,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 function closeAllInside(container){
 
     container.querySelectorAll('.content').forEach(el=>{
-        el.style.display='none';
+        el.style.display='';
     });
 
     container.querySelectorAll('.open').forEach(el=>{
@@ -774,7 +774,7 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
 
         const parent=this.parentElement;
         const content=this.nextElementSibling;
-        const opened=content.style.display==='block';
+        const opened=content.style.display==='';
 
         document.querySelectorAll('.main').forEach(item=>{
 
@@ -783,7 +783,7 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
                 item.classList.remove('open');
 
                 const c=item.querySelector(':scope > .content');
-                c.style.display='none';
+                c.style.display='';
 
                 closeAllInside(c);
 
@@ -793,13 +793,13 @@ document.querySelectorAll('.main > .header').forEach(btn=>{
 
         if(opened){
 
-            content.style.display='none';
+            content.style.display='';
             parent.classList.remove('open');
             closeAllInside(content);
 
         }else{
 
-            content.style.display='block';
+            content.style.display='';
             parent.classList.add('open');
 
         }
